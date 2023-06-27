@@ -1,5 +1,5 @@
 const root = () => {
-  return <div>r oot</div>;
+  return <div>root</div>;
 };
 
 export default root;
