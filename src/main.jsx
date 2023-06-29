@@ -9,6 +9,7 @@ import Women from './routes/Women/Women';
 import Men from './routes/Men/Men';
 import Kids from './routes/Kids/Kids';
 import Register from './routes/Register/Register';
+import Login from './routes/Login/login';
 import Products from './routes/Products/Products';
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
       },
     ],
   },
