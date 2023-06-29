@@ -1,53 +1,53 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Root from "./root";
-import Home from "./routes/Home/Home";
-import Featured from "./routes/Featured/Featured";
-import Women from "./routes/Women/Women";
-import Men from "./routes/Men/Men";
-import Kids from "./routes/Kids/Kids";
-import Register from "./routes/Register/Register";
-import Products from "./routes/Products/Products";
+import Root from './root';
+import Home from './routes/Home/Home';
+import Featured from './routes/Featured/Featured';
+import Women from './routes/Women/Women';
+import Men from './routes/Men/Men';
+import Kids from './routes/Kids/Kids';
+import Register from './routes/Register/Register';
+import Products from './routes/Products/Products';
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Root />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/featured",
+        path: '/featured',
         element: <Featured />,
       },
       {
-        path: "products",
+        path: 'products',
         element: <Products />,
       },
       {
-        path: "/women",
+        path: '/women',
         element: <Women />,
       },
       {
-        path: "/men",
+        path: '/men',
         element: <Men />,
       },
       {
-        path: "/kids",
+        path: '/kids',
         element: <Kids />,
       },
       {
-        path: "/register",
+        path: '/register',
         element: <Register />,
       },
     ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
