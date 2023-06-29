@@ -8,7 +8,8 @@ import Featured from "./routes/Featured/Featured";
 import Women from "./routes/Women/Women";
 import Men from "./routes/Men/Men";
 import Kids from "./routes/Kids/Kids";
-import Register from "./routes/Register.jsx/Register";
+import Register from "./routes/Register/Register";
+import Products from "./routes/Products/Products";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/featured",
         element: <Featured />,
+      },
+      {
+        path: "products",
+        element: <Products />,
       },
       {
         path: "/women",

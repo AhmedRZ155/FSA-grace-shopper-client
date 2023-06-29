@@ -12,6 +12,7 @@ export default function Navbar() {
           <Link className="topNavLink" to={"/featured"}>
             help
           </Link>
+
           <Link className="topNavLink" to={"/women"}>
             join us
           </Link>
@@ -28,6 +29,9 @@ export default function Navbar() {
           </Link>
           <Link className="navLink" to={"/featured"}>
             Featured
+          </Link>
+          <Link className="navLink" to={"/Products"}>
+            products
           </Link>
           <Link className="navLink" to={"/women"}>
             Women
