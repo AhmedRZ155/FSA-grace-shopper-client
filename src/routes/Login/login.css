@@ -1,0 +1,35 @@
+.loginInputFields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginInputFields input {
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+  width: 95%;
+  margin: 10px;
+}
+.submitLogin {
+  border-radius: 5px;
+  width: 50%;
+  border: solid black 1px;
+  background-color: white;
+}
+.submitLogin:hover {
+  color: white;
+  background-color: black;
+}
+.registerLink {
+  text-decoration: none;
+  color: black;
+  border: solid black 1px;
+  padding: 4px;
+  margin-left: 4px;
+  border-radius: 5px;
+}
+.registerLink:hover {
+  color: white;
+  background-color: black;
+}
