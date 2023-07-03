@@ -1,23 +1,45 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './login.css'
+import { useOutletContext } from 'react-router-dom'
 export default function Login() {
-  const register = async (ev) => {
-    ev.preventDefault()
+  const [loginUsername, setLoginUsername] = useState('')
+  const [loginPassword, setLoginPassword] = useState('')
+  const [email, setEmail] = ''
+  const [password, setPassword] = ''
+
+  const userLogin = async () => {
     try {
-      console.log("You're Logged in!")
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/users/login`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        },
+      )
+      const result = await response.json()
+      if (result.success) {
+        const token = result.data.token
+        localStorage.setItem('token', token)
+        setUser(result.data.user)
+        setToken(token)
+        navigate('/home')
+      }
+      return result
     } catch (err) {
       console.error(err)
     }
   }
-
-  const [loginUsername, setLoginUsername] = useState('')
-  const [loginPassword, setLoginPassword] = useState('')
-
   return (
     <div>
       <h1 className="registerHereTag">Login</h1>
-      <form className="loginInputFields" onSubmit={Login}>
+      <form className="loginInputFields" onSubmit={userLogin}>
         <input
           placeholder="username"
           value={loginUsername}

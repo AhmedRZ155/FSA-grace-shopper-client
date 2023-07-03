@@ -1,17 +1,86 @@
 .centerContent {
   display: flex;
+  flex-wrap: wrap; /* Allow elements to wrap to the next line */
   justify-content: space-around;
 }
 
-.scrollableContent {
-  width: 200px;
-  background-color: rgb(112, 112, 194);
+.centerPhoto {
+  flex: 1 1 100%; /* Expand to take the full width of the line */
   display: flex;
   justify-content: center;
+}
+.photoAct {
+  max-height: 500px;
+}
+.photoWrapper {
+  width: 100%;
 }
 
-.centerPhoto {
+.photoWrapper img {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  height: auto; /* Maintain the aspect ratio of the image */
 }
+.topContent {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scroll-snap-type: x mandatory; /* Snap each item to the viewport */
+  padding: 10px 0; /* Add some padding to separate the items from the edges */
+}
+
+.columnComponent {
+  display: flex;
+}
+
+.iconWrapper {
+  width: 200px; /* Set the width of each photo wrapper */
+  height: 200px; /* Set the height of each photo wrapper */
+  margin-right: 10px; /* Add some space between the items */
+  scroll-snap-align: initial; /* Snap each item to the start of the viewport */
+}
+
+.iconWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio and fill the photo wrapper */
+}
+.scrollableContent {
+  /* Set desired height and enable scrolling */
+  height: 400px;
+  overflow: auto;
+  /* Add padding or margins if needed */
+  padding: 20px;
+}
+
+.contentWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates 4 columns */
+  gap: 20px; /* Adjust spacing between content cards */
+}
+
+.contentCard {
+  background-color: grey;
+  width: 100%; /* Adjust width as needed */
+  padding-top: 100%; /* Maintain a square aspect ratio */
+}
+
+/* .centerContent {
+  display: none; Initially hide the centerContent element
+}
+
+Show the centerContent element if the window size is larger than 50%
+@media (min-width: 50%) {
+  .centerContent {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .scrollableContent {
+    display: flex;
+    justify-content: center;
+  }
+
+  .centerPhoto {
+    display: flex;
+    justify-content: center;
+  }
+} */
