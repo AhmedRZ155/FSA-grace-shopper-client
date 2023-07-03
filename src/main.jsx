@@ -11,6 +11,8 @@ import Kids from './routes/Kids/Kids';
 import Register from './routes/Register/Register';
 import Login from './routes/Login/login';
 import Products from './routes/Products/Products';
+import SingleProduct from './routes/SingleProduct/SingleProduct';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <Products />,
+      },
+      {
+        path: '/products/:productId',
+        element: <SingleProduct />,
       },
       {
         path: '/women',
