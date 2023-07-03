@@ -36,10 +36,11 @@ export default function Login() {
       console.error(err)
     }
   }
+
   return (
     <div>
       <h1 className="registerHereTag">Login</h1>
-      <form className="loginInputFields" onSubmit={userLogin}>
+      <form className="loginInputFields" onSubmit={Login}>
         <input
           placeholder="username"
           value={loginUsername}

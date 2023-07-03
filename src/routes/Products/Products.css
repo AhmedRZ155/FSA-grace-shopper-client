@@ -1,4 +1,4 @@
-/* men.css */
+/* Products.css */
 
 .container {
   max-width: 800px;
@@ -16,6 +16,16 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+h1 {
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -30,7 +40,7 @@ p {
 
 .price {
   font-weight: bold;
-  color: #000000;
+  color: #008000;
 }
 
 .category {

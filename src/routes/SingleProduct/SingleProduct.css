@@ -1,4 +1,4 @@
-/* men.css */
+/* singleProduct.css */
 
 .container {
   max-width: 800px;
@@ -6,22 +6,21 @@
   padding: 20px;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 20px;
-}
-
 .product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
+  margin: 0 auto;
 }
 
-h2 {
-  font-size: 20px;
+h1 {
+  font-size: 28px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 p {
@@ -31,12 +30,11 @@ p {
 .price {
   font-weight: bold;
   color: #000000;
+  font-size: 24px;
 }
 
-.category {
+.description {
   font-style: italic;
-}
-
-.quantity {
-  color: #888;
+  color: #666;
+  font-size: 18px;
 }
