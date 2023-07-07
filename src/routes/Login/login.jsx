@@ -2,13 +2,18 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './login.css'
 import { useOutletContext } from 'react-router-dom'
-export default function Login() {
-  const [loginUsername, setLoginUsername] = useState('')
-  const [loginPassword, setLoginPassword] = useState('')
-  const [email, setEmail] = ''
-  const [password, setPassword] = ''
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
-  const userLogin = async () => {
+export default function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const { setToken, setUser } = useOutletContext()
+  const navigate = useNavigate()
+
+  const userLogin = async (ev) => {
+    ev.preventDefault()
+    console.log(email, password)
     try {
       const response = await fetch(
         `${import.meta.env.VITE_BASE_URL}/api/users/login`,
@@ -26,10 +31,16 @@ export default function Login() {
       const result = await response.json()
       if (result.success) {
         const token = result.data.token
-        localStorage.setItem('token', token)
-        setUser(result.data.user)
-        setToken(token)
-        navigate('/home')
+        setUser({
+          name: result.data.name,
+          email: result.data.email,
+          type: result.data.type,
+        })
+        console.log(result)
+        setToken(result.data.token)
+        localStorage.setItem('token', result.data.token)
+        navigate('/')
+        toast.success('login!')
       }
       return result
     } catch (err) {
@@ -40,19 +51,19 @@ export default function Login() {
   return (
     <div>
       <h1 className="registerHereTag">Login</h1>
-      <form className="loginInputFields" onSubmit={Login}>
+      <form className="loginInputFields">
         <input
           placeholder="username"
-          value={loginUsername}
-          onChange={(ev) => setLoginUsername(ev.target.value)}
+          value={email}
+          onChange={(ev) => setEmail(ev.target.value)}
         />
         <input
           placeholder="password"
           type="password"
-          value={loginPassword}
-          onChange={(ev) => setLoginPassword(ev.target.value)}
+          value={password}
+          onChange={(ev) => setPassword(ev.target.value)}
         />
-        <button className="submitLogin" type="submit">
+        <button onClick={userLogin} className="submitLogin" type="submit">
           Login
         </button>
       </form>
