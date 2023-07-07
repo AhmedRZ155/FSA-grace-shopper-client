@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Register.css'
@@ -11,6 +12,20 @@ export default function Register() {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const { setToken, setUser } = useOutletContext()
+=======
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Register.css';
+import { useOutletContext } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+export default function Register() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const { setToken, setUser } = useOutletContext();
+>>>>>>> d50c5f9ae04811e498b710fc285adeff3fca7d18
   const registerUser = async (ev) => {
     ev.preventDefault()
     try {
@@ -36,10 +51,16 @@ export default function Register() {
         name: result.data.name,
         email: result.data.email,
         type: result.data.type,
+<<<<<<< HEAD
       })
       localStorage.setItem('token', result.data.token)
       navigate('/')
       toast.success('login!')
+=======
+      });
+      localStorage.setItem('token', result.data.token);
+      navigate('/');
+>>>>>>> d50c5f9ae04811e498b710fc285adeff3fca7d18
     } catch (err) {
       console.error(err)
     }

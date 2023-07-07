@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './SingleProduct.css';
 
@@ -12,8 +12,8 @@ const SingleProduct = () => {
         const response = await fetch(
           `${import.meta.env.VITE_BASE_URL}/api/products`
         );
-
         const data = await response.json();
+
         if (data.success) {
           console.log('Data fetched successfully');
         }
@@ -21,6 +21,7 @@ const SingleProduct = () => {
         const singleProduct = data.data.find(
           (product) => product.id == productId
         );
+
         setProduct(singleProduct);
       } catch (error) {
         console.error(error);

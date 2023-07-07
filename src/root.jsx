@@ -24,7 +24,12 @@ export default function Root() {
         )
         const result = await response.json()
         console.log(result)
-        setUser(result.data)
+        setUser({
+          name: result.data.name,
+          email: result.data.email,
+          type: result.data.type,
+        })
+        setCart(result.data.cart)
       } catch (err) {
         console.error(err)
       }

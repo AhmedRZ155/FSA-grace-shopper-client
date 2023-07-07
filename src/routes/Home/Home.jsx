@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../../components/Footer/footer'
 import './Home.css'
+=======
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/Footer/footer';
+import './Home.css';
+>>>>>>> d50c5f9ae04811e498b710fc285adeff3fca7d18
 
 const Home = () => {
   const [products, setProducts] = useState([])
