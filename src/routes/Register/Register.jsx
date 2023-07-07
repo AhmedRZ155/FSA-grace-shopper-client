@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
 import { useOutletContext } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -34,6 +36,8 @@ export default function Register() {
         email: result.data.email,
         type: result.data.type,
       });
+      localStorage.setItem('token', result.data.token);
+      navigate('/');
     } catch (err) {
       console.error(err);
     }

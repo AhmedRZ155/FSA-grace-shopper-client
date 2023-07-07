@@ -1,12 +1,12 @@
-import { Outlet, useRouteLoaderData } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
-export const BASE_URL = 'http://localhost:5173/';
+
 import { useState, useEffect } from 'react';
-import Footer from './components/Footer/footer';
 
 export default function Root() {
   const [user, setUser] = useState({});
   const [token, setToken] = useState('');
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     const userData = async () => {
       try {
@@ -21,7 +21,12 @@ export default function Root() {
         );
         const result = await response.json();
         console.log(result);
-        setUser(result.data);
+        setUser({
+          name: result.data.name,
+          email: result.data.email,
+          type: result.data.type,
+        });
+        setCart(result.data.cart);
       } catch (err) {
         console.error(err);
       }
@@ -33,7 +38,7 @@ export default function Root() {
   return (
     <div>
       <Navbar user={user} />
-      <Outlet context={{ user, setUser, token, setToken }} />
+      <Outlet context={{ user, setUser, token, setToken, cart }} />
     </div>
   );
 }
