@@ -1,49 +1,60 @@
-import React, { useState, useEffect } from 'react'
-import './Kids.css'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Kids.css';
 const Kids = () => {
-  const [products, setProducts] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:1337/api/products')
-        const data = await response.json()
+        const response = await fetch(
+          `${import.meta.env.VITE_BASE_URL}/api/products`
+        );
+        const data = await response.json();
 
         if (data.success) {
-          console.log('Data fetched successfully')
+          console.log('Data fetched successfully');
         }
 
         const kidsProducts = data.data.filter(
-          (product) => product.category === 'kids',
-        )
-        setProducts(kidsProducts)
+          (product) => product.category === 'kids'
+        );
+        setProducts(kidsProducts);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   return (
-    <div className="container product-grid">
+    <div className='container product-grid'>
       {products.map((product) => (
-        <div className="product-card" key={product.id}>
-          <h1>{product.name}</h1>
-          <p>{product.description}</p>
-          <p className="price">{product.price}</p>
-          <p className="category">{product.category}</p>
+        <div
+          onClick={() => navigate(`/products/${product.id}`)}
+          className='product-card'
+          key={product.id}
+        >
+          <div className='product-card' key={product.id}>
+            <h1>{product.name}</h1>
+
+            <p className='price'>{product.price}</p>
+            <p className='category'>{product.category}</p>
+            <img src={product.images[0].url} className='image' />
+          </div>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Kids
+export default Kids;

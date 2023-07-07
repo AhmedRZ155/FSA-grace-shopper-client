@@ -27,7 +27,10 @@ h1 {
 p {
   margin: 5px 0;
 }
-
+.image {
+  width: 100%;
+  height: auto;
+}
 .price {
   font-weight: bold;
   color: #000000;

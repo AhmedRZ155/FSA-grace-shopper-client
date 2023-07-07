@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import './Register.css'
-import { useOutletContext } from 'react-router-dom'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Register.css';
+import { useOutletContext } from 'react-router-dom';
+
 export default function Register() {
-  const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
-  const [password, setPassword] = useState('')
-  const { setToken, token } = useOutletContext()
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const { setToken, setUser } = useOutletContext();
   const registerUser = async (ev) => {
-    ev.preventDefault()
+    ev.preventDefault();
     try {
       const response = await fetch(
         `${import.meta.env.VITE_BASE_URL}/api/users/register`,
@@ -18,51 +19,56 @@ export default function Register() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            email: email,
-            name: 'jeffery',
-            password: password,
+            email,
+            name,
+            password,
           }),
-        },
-      )
+        }
+      );
 
-      const result = await response.json()
-      console.log(result)
-      return result
+      const result = await response.json();
+      console.log(result);
+      setToken(result.data.token);
+      setUser({
+        name: result.data.name,
+        email: result.data.email,
+        type: result.data.type,
+      });
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
-
-  const [registerUsername, setRegisterUsername] = useState('')
-  const [registerPassword, setRegisterPassword] = useState('')
-  const [loginUsername, setLoginUsername] = useState('')
-  const [loginPassword, setLoginPassword] = useState('')
+  };
 
   return (
     <div>
-      <h1 className="registerHereTag">Register Here</h1>
-      <form className="registerInputFields" onSubmit={registerUser}>
+      <h1 className='registerHereTag'>Register Here</h1>
+      <form className='registerInputFields' onSubmit={registerUser}>
         <input
-          placeholder="username"
-          value={registerUsername}
-          onChange={(ev) => setRegisterUsername(ev.target.value)}
+          placeholder='email'
+          value={email}
+          onChange={(ev) => setEmail(ev.target.value)}
         />
         <input
-          placeholder="password"
-          type="password"
-          value={registerPassword}
-          onChange={(ev) => setRegisterPassword(ev.target.value)}
+          placeholder='name'
+          value={name}
+          onChange={(ev) => setName(ev.target.value)}
         />
-        <button onClick={registerUser} className="submitRegister" type="submit">
+        <input
+          placeholder='password'
+          type='password'
+          value={password}
+          onChange={(ev) => setPassword(ev.target.value)}
+        />
+        <button onClick={registerUser} className='submitRegister' type='submit'>
           Register
         </button>
       </form>
       <p>
         Already a user?{' '}
-        <Link className="loginLink" to={'/login'}>
+        <Link className='loginLink' to={'/login'}>
           Login
         </Link>
       </p>
     </div>
-  )
+  );
 }

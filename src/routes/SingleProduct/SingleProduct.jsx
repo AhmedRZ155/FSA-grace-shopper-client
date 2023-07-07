@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './SingleProduct.css';
-const BASE_URL = 'http://localhost:1337/api';
+
 const SingleProduct = () => {
   const [product, setProduct] = useState(null);
   const { productId } = useParams();
@@ -9,7 +9,9 @@ const SingleProduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/products`);
+        const response = await fetch(
+          `${import.meta.env.VITE_BASE_URL}/api/products`
+        );
 
         const data = await response.json();
         if (data.success) {
@@ -33,12 +35,12 @@ const SingleProduct = () => {
   }
 
   return (
-    <div className='container'>
-      <div className='product-card'>
-        <h1>{product.name}</h1>
-        <p className='description'>{product.description}</p>
-        <p className='price'>{product.price}</p>
-      </div>
+    <div className='product-detail'>
+      <img src={product.images[0].url} alt={product.name} />
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+      <p>{product.price}</p>
+      <p>{product.category}</p>
     </div>
   );
 };

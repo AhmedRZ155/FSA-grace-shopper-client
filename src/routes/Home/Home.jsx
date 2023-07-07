@@ -1,116 +1,76 @@
-import './Home.css'
-import { Link } from 'react-router-dom'
-import Footer from '../../components/Footer/footer'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/Footer/footer';
+import './Home.css';
 
-export default function Home() {
-  return (
-    <div>
-      <>
-        <div class="topContent">
-          <div className="columnComponent">
-            <Link to="/featured">
-              <div className="iconWrapper">
-                <img
-                  src="https://media.istockphoto.com/id/470643888/photo/african-athlete-smiling-positively-after-a-good-training-session.jpg?s=612x612&w=0&k=20&c=mqEfE46hO8GMxoczsmFeOAUeK02s8g3wAfCX0Bx26-I="
-                  alt=""
-                />
-              </div>
-            </Link>
+const Home = () => {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
-            {/* Icon 2 */}
-            <Link to="/featured">
-              <div className="iconWrapper">
-                <img
-                  src="https://media.istockphoto.com/id/470643888/photo/african-athlete-smiling-positively-after-a-good-training-session.jpg?s=612x612&w=0&k=20&c=mqEfE46hO8GMxoczsmFeOAUeK02s8g3wAfCX0Bx26-I="
-                  alt=""
-                />
-              </div>
-            </Link>
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:1337/api/products');
+        const data = await response.json();
 
-            {/* Icon 3 */}
-            <Link to="/featured">
-              <div className="iconWrapper">
-                <img
-                  src="https://media.istockphoto.com/id/470643888/photo/african-athlete-smiling-positively-after-a-good-training-session.jpg?s=612x612&w=0&k=20&c=mqEfE46hO8GMxoczsmFeOAUeK02s8g3wAfCX0Bx26-I="
-                  alt=""
-                />
-              </div>
-            </Link>
-            <Link to="/featured">
-              <div className="iconWrapper">
-                <img
-                  src="https://media.istockphoto.com/id/470643888/photo/african-athlete-smiling-positively-after-a-good-training-session.jpg?s=612x612&w=0&k=20&c=mqEfE46hO8GMxoczsmFeOAUeK02s8g3wAfCX0Bx26-I="
-                  alt=""
-                />
-              </div>
-            </Link>
-            <Link to="/featured">
-              <div className="iconWrapper">
-                <img
-                  src="https://media.istockphoto.com/id/470643888/photo/african-athlete-smiling-positively-after-a-good-training-session.jpg?s=612x612&w=0&k=20&c=mqEfE46hO8GMxoczsmFeOAUeK02s8g3wAfCX0Bx26-I="
-                  alt=""
-                />
-              </div>
-            </Link>
-            <Link to="/featured">
-              <div className="iconWrapper">
-                <img
-                  src="https://media.istockphoto.com/id/470643888/photo/african-athlete-smiling-positively-after-a-good-training-session.jpg?s=612x612&w=0&k=20&c=mqEfE46hO8GMxoczsmFeOAUeK02s8g3wAfCX0Bx26-I="
-                  alt=""
-                />
-              </div>
-            </Link>
-            <Link to="/featured">
-              <div className="iconWrapper">
-                <img
-                  src="https://media.istockphoto.com/id/470643888/photo/african-athlete-smiling-positively-after-a-good-training-session.jpg?s=612x612&w=0&k=20&c=mqEfE46hO8GMxoczsmFeOAUeK02s8g3wAfCX0Bx26-I="
-                  alt=""
-                />
-              </div>
-            </Link>
-          </div>
+        if (data.success) {
+          console.log('Data fetched successfully');
+        }
+
+        setProducts(data.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const trendingProducts = products.filter(
+    (product) => product.type === 'trending'
+  );
+  const saleProducts = products.filter((product) => product.type === 'on sale');
+  const newProducts = products.filter((product) => product.type === 'new');
+
+  const renderProducts = (products) => (
+    <div className='product-grid'>
+      {products.map((product) => (
+        <div
+          onClick={() => navigate(`/products/${product.id}`)}
+          className='product-card'
+          key={product.id}
+        >
+          <h2>{product.name}</h2>
+          <p className='price'>{product.price}</p>
+          <p className='category'>{product.type}</p>
+          <p className='category'>{product.category}</p>
+          <img src={product.images[0].url} className='image' />
         </div>
-        <div class="centerPhoto">
-          <div class="photoWrapper">
-            <img
-              className="photoAct"
-              src="https://media.istockphoto.com/id/1382867793/photo/portrait-of-happy-fit-people-running-together-ourdoors-couple-sport-healthy-lifetsyle-concept.jpg?s=612x612&w=0&k=20&c=7Ii37tmJXH_08ojuhRk73FGTg2qtslO7AVm5OXv-yZQ="
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="scrollableContent">
-          <div class="contentWrapper">
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-            <div class="contentCard"></div>
-          </div>
-        </div>
-      </>
-      <footer>
-        <Footer></Footer>
-      </footer>
+      ))}
     </div>
-  )
-}
+  );
+
+  return (
+    <div className='container'>
+      <h1>Trending</h1>
+      {renderProducts(trendingProducts)}
+
+      <h1>On Sale</h1>
+      {renderProducts(saleProducts)}
+
+      <h1>New</h1>
+      {renderProducts(newProducts)}
+      <div>
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default Home;
