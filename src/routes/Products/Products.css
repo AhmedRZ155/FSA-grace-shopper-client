@@ -23,7 +23,10 @@
 .product-card:hover {
   transform: scale(1.03);
 }
-
+.image {
+  width: 100%;
+  height: auto;
+}
 h1 {
   margin-bottom: 20px;
 }
@@ -40,7 +43,7 @@ p {
 
 .price {
   font-weight: bold;
-  color: #008000;
+  color: #000000;
 }
 
 .category {

@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Root from './root';
 import Home from './routes/Home/Home';
-import Featured from './routes/Featured/Featured';
+
 import Women from './routes/Women/Women';
 import Men from './routes/Men/Men';
 import Kids from './routes/Kids/Kids';
@@ -21,10 +21,6 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-      },
-      {
-        path: '/featured',
-        element: <Featured />,
       },
       {
         path: 'products',

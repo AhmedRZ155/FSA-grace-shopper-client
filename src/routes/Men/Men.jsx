@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Men.css';
 const Men = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:1337/api/products');
+        const response = await fetch(
+          `${import.meta.env.VITE_BASE_URL}/api/products`
+        );
         const data = await response.json();
 
         if (data.success) {
@@ -36,11 +40,18 @@ const Men = () => {
     <div className='container'>
       <div className='product-grid'>
         {products.map((product) => (
-          <div className='product-card' key={product.id}>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p className='price'>{product.price}</p>
-            <p className='category'>{product.category}</p>
+          <div
+            onClick={() => navigate(`/products/${product.id}`)}
+            className='product-card'
+            key={product.id}
+          >
+            <div className='product-card' key={product.id}>
+              <h2>{product.name}</h2>
+
+              <p className='price'>{product.price}</p>
+              <p className='category'>{product.category}</p>
+              <img src={product.images[0].url} className='image' />
+            </div>
           </div>
         ))}
       </div>
