@@ -51,7 +51,7 @@ export default function Login() {
   return (
     <div>
       <h1 className='registerHereTag'>Login</h1>
-      <form className='loginInputFields'>
+      <form className='loginInputFields' onSubmit={userLogin}>
         <input
           placeholder='username'
           value={email}
@@ -63,7 +63,7 @@ export default function Login() {
           value={password}
           onChange={(ev) => setPassword(ev.target.value)}
         />
-        <button onClick={userLogin} className='submitLogin' type='submit'>
+        <button className='submitLogin' type='submit'>
           Login
         </button>
       </form>

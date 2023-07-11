@@ -9,7 +9,7 @@ const initialToken = localStorage.getItem('token') || '';
 export default function Root() {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(initialToken);
-  const [setCart] = useState([]);
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     const userData = async () => {
       try {
@@ -41,7 +41,7 @@ export default function Root() {
   return (
     <div>
       <Navbar user={user} />
-      <Outlet context={{ user, setUser, token, setToken }} />
+      <Outlet context={{ user, setUser, token, setToken, cart, setCart }} />
       <Notifications />
     </div>
   );

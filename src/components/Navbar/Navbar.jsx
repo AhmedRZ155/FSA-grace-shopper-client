@@ -27,9 +27,11 @@ export default function Navbar({ user, setToken, setUser }) {
           <Link className='navLink' to={'/kids'}>
             Kids
           </Link>
-          <Link className='navLink' to='/Carts'>
-            Cart
-          </Link>
+          {user.name && (
+            <Link className='navLink' to={'/Carts'}>
+              Cart
+            </Link>
+          )}
           <Link className='navLink' to={'/Register'}>
             Register
           </Link>
