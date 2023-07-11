@@ -9,6 +9,7 @@ const initialToken = localStorage.getItem('token') || ''
 export default function Root() {
   const [user, setUser] = useState({})
   const [token, setToken] = useState(initialToken)
+  const [cart, setCart] = useState([])
 
   useEffect(() => {
     const userData = async () => {

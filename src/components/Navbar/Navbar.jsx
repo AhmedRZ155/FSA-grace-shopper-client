@@ -10,32 +10,41 @@ export default function Navbar({ user, setToken, setUser }) {
   }
   return (
     <div className="navLinkAll">
-      <div className="sepTopNav"></div>
-      <div className="sepBottomNav">
-        <div className="bottomNav">
-          <Link className="navLink" to={'/'}>
-            Home
+      <div className="bottomNav">
+        <Link className="navLink" to={'/'}>
+          Home
+        </Link>
+        <Link className="navLink" to={'/Products'}>
+          Products
+        </Link>
+        <Link className="navLink" to={'/women'}>
+          Women
+        </Link>
+
+        <Link className="navLink" to={'/men'}>
+          Men
+        </Link>
+        <Link className="navLink" to={'/Kids'}>
+          Kids
+        </Link>
+        {!user.name && (
+          <Link className="navLink" to={'/register'}>
+            Login or Register
           </Link>
-          <Link className="navLink" to={'/Products'}>
-            products
-          </Link>
-          <Link className="navLink" to={'/women'}>
-            Women
-          </Link>
+        )}
+        {user.name && (
           <Link className="navLink" to="/Carts">
             Cart
           </Link>
-          <Link className="navLink" to={'/men'}>
-            Men
+        )}
+      </div>
+      <div className="welcomeLog">
+        {user.name && <p className=" welcomeUser">Welcome, {user.name}</p>}
+        {user.name && (
+          <Link onClick={handleLogout} className="logoutUser" to={'/'}>
+            Logout
           </Link>
-
-          {user.name && (
-            <Link onClick={handleLogout} className="navLink" to={'/'}>
-              Logout
-            </Link>
-          )}
-          {user.name && <p>Welcome {user.name}</p>}
-        </div>
+        )}
       </div>
     </div>
   )
