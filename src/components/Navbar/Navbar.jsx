@@ -16,7 +16,7 @@ export default function Navbar({ user, setToken, setUser }) {
             Home
           </Link>
           <Link className='navLink' to={'/Products'}>
-            products
+            Products
           </Link>
           <Link className='navLink' to={'/men'}>
             Men

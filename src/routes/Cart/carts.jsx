@@ -29,11 +29,11 @@ const Cart = () => {
         <p>Your cart is empty.</p>
       ) : (
         <ul className='cart-items'>
-          {cart.map((item) => (
-            <li key={item.id} className='cart-item'>
+          {cart.map((item, index) => (
+            <li key={index} className='cart-item'>
               <div className='item-info'>
                 <h2>{item.name}</h2>
-                <p>{item.description}</p>
+                <img src={item.images[0].url} className='image' />
                 <p>Price: {item.price}</p>
                 <p>Quantity: {item.quantity}</p>
                 <button onClick={() => increaseQuantity(item.id)}>+</button>
