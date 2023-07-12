@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Root from './root';
 import Home from './routes/Home/Home';
-
 import Women from './routes/Women/Women';
 import Men from './routes/Men/Men';
 import Kids from './routes/Kids/Kids';

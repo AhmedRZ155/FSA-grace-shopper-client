@@ -2,7 +2,25 @@ import './carts.css';
 import { useOutletContext } from 'react-router-dom';
 
 const Cart = () => {
-  const { cart } = useOutletContext();
+  const { cart, setCart } = useOutletContext();
+
+  const increaseQuantity = (productId) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (productId) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId
+          ? { ...item, quantity: item.quantity > 1 ? item.quantity - 1 : 1 }
+          : item
+      )
+    );
+  };
 
   return (
     <div className='cart-container'>
@@ -11,12 +29,15 @@ const Cart = () => {
         <p>Your cart is empty.</p>
       ) : (
         <ul className='cart-items'>
-          {cart.map((item) => (
-            <li key={item.id} className='cart-item'>
+          {cart.map((item, index) => (
+            <li key={index} className='cart-item'>
               <div className='item-info'>
                 <h2>{item.name}</h2>
-                <p>{item.description}</p>
+                <img src={item.images[0].url} className='image' />
                 <p>Price: {item.price}</p>
+                <p>Quantity: {item.quantity}</p>
+                <button onClick={() => increaseQuantity(item.id)}>+</button>
+                <button onClick={() => decreaseQuantity(item.id)}>-</button>
               </div>
             </li>
           ))}
