@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './login.css'
 import { useOutletContext } from 'react-router-dom'
@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { setToken, setUser, user } = useOutletContext()
+  const { setToken, setUser } = useOutletContext()
   const navigate = useNavigate()
 
   const userLogin = async (ev) => {
@@ -40,7 +40,7 @@ export default function Login() {
         setToken(result.data.token)
         localStorage.setItem('token', result.data.token)
         navigate('/')
-        toast.success(`Welcome back, ${user.name}!`)
+        toast.success('login!')
       }
       return result
     } catch (err) {
@@ -51,7 +51,7 @@ export default function Login() {
   return (
     <div>
       <h1 className="registerHereTag">Login</h1>
-      <form className="loginInputFields">
+      <form className="loginInputFields" onSubmit={userLogin}>
         <input
           placeholder="username"
           value={email}
@@ -63,16 +63,16 @@ export default function Login() {
           value={password}
           onChange={(ev) => setPassword(ev.target.value)}
         />
-        <button onClick={userLogin} className="submitLogin" type="submit">
+        <button className="submitLogin" type="submit">
           Login
         </button>
       </form>
-      <p>
-        New here?{' '}
+      <div className="newCreate">
+        <p className="newToMoody">---------- New to Moodi? ----------</p>
         <Link className="registerLink" to={'/register'}>
-          Register
+          Create your Moodi account
         </Link>
-      </p>
+      </div>
     </div>
   )
 }

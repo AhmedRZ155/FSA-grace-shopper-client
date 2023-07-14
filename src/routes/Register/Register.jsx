@@ -65,7 +65,7 @@ export default function Register() {
           value={password}
           onChange={(ev) => setPassword(ev.target.value)}
         />
-        <button onClick={registerUser} className="submitRegister" type="submit">
+        <button className="submitRegister" type="submit">
           Register
         </button>
       </form>

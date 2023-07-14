@@ -1,50 +1,107 @@
 import { Link } from 'react-router-dom'
 import './Navbar.css'
+import { useState } from 'react'
 
 export default function Navbar({ user, setToken, setUser }) {
+  const [navShow, setNavShow] = useState(false)
+  useState(false)
   function handleLogout() {
     localStorage.removeItem('token')
     alert(`Successfully logged out of ${user.name}'s profile`)
     setToken('')
     setUser({})
   }
+  function toggleLinks() {
+    setNavShow(!navShow)
+  }
+
   return (
-    <div className="navLinkAll">
-      <div className="bottomNav">
-        <Link className="navLink" to={'/'}>
+    <div className="navBar">
+      <div className="navHeader longNavHeader">
+        <div className="welcomeBanner">
+          <img className="moodiLogo" src="images/4_360.png" alt="Logo" />
+          <div className="welcomeBtn"></div>
+        </div>
+        {user.name && <p className="welcomeUser">Welcome, {user.name}</p>}
+        <button onClick={toggleLinks} className="navToggleBtn">
+          <i className="fas fa-bars"></i>
+        </button>
+      </div>
+      <div className="longNav">
+        <Link className="navLink" to="/">
           Home
         </Link>
-        <Link className="navLink" to={'/Products'}>
+        <Link className="navLink" to="/Products">
           Products
         </Link>
-        <Link className="navLink" to={'/women'}>
-          Women
-        </Link>
-
-        <Link className="navLink" to={'/men'}>
+        <Link className="navLink" to="/men">
           Men
         </Link>
-        <Link className="navLink" to={'/Kids'}>
+        <Link className="navLink" to="/women">
+          Women
+        </Link>
+        <Link className="navLink" to="/kids">
           Kids
         </Link>
-        {!user.name && (
-          <Link className="navLink" to={'/register'}>
-            Login or Register
-          </Link>
-        )}
         {user.name && (
           <Link className="navLink" to="/Carts">
             Cart
           </Link>
         )}
-      </div>
-      <div className="welcomeLog">
-        {user.name && <p className=" welcomeUser">Welcome, {user.name}</p>}
+        {!user.name && (
+          <Link className="navLink" to="/login">
+            Hello, Sign in
+          </Link>
+        )}
         {user.name && (
-          <Link onClick={handleLogout} className="logoutUser" to={'/'}>
+          <Link onClick={handleLogout} className="navLink" to="/">
             Logout
           </Link>
         )}
+
+        {user.name && (
+          <p className="welcomeUser shortWelcome">Welcome, {user.name}</p>
+        )}
+      </div>
+      <div className="navHeader shortNavHeader">
+        {user.name && <p className="welcomeUser">Welcome, {user.name}</p>}
+        <div className="welcomeBanner">
+          <h1>Moodi</h1>
+        </div>
+      </div>
+      <div className="noShowLong">
+        <div className={navShow ? 'shortNav' : 'shortNavShow'}>
+          <Link className="navLink" to="/">
+            Home
+          </Link>
+          <Link className="navLink" to="/Products">
+            Products
+          </Link>
+          <Link className="navLink" to="/men">
+            Men
+          </Link>
+          <Link className="navLink" to="/women">
+            Women
+          </Link>
+          <Link className="navLink" to="/kids">
+            Kids
+          </Link>
+          {user.name && (
+            <Link className="navLink" to="/Carts">
+              Cart
+            </Link>
+          )}
+          {!user.name && (
+            <Link className="navLink" to="/login">
+              Hello, Sign in
+            </Link>
+          )}
+          {user.name && (
+            <Link onClick={handleLogout} className="navLink" to="/">
+              Logout
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   )

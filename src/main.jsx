@@ -1,18 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import Root from './root';
-import Home from './routes/Home/Home';
+import Root from './root'
+import Home from './routes/Home/Home'
 
-import Women from './routes/Women/Women';
-import Men from './routes/Men/Men';
-import Kids from './routes/Kids/Kids';
-import Register from './routes/Register/Register';
-import Login from './routes/Login/login';
-import Products from './routes/Products/Products';
-import SingleProduct from './routes/SingleProduct/SingleProduct';
-import Carts from './routes/Cart/carts';
+import Women from './routes/Women/Women'
+import Men from './routes/Men/Men'
+import Kids from './routes/Kids/Kids'
+import Register from './routes/Register/Register'
+import Login from './routes/Login/login'
+import Products from './routes/Products/Products'
+import SingleProduct from './routes/SingleProduct/SingleProduct'
+import Carts from './routes/Cart/carts'
 
 const router = createBrowserRouter([
   {
@@ -57,11 +57,11 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+])
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
-);
+  </React.StrictMode>,
+)
