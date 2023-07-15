@@ -56,7 +56,7 @@ const SingleProduct = () => {
 
       const data = await response.json();
       if (response.ok && data.success) {
-        setCart((prevCart) => [...prevCart, { ...product, quantity: 1 }]);
+        setCart(data.data);
         console.log('Product added to cart:', product.name);
       } else {
         console.error('Failed to add product to cart:', data.message);

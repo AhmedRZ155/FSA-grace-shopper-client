@@ -41,7 +41,6 @@ const Women = () => {
       {products.map((product) => (
         <div
           onClick={() => navigate(`/products/${product.id}`)}
-          className='product-card'
           key={product.id}
         >
           <div className='product-card' key={product.id}>
