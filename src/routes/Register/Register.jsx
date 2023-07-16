@@ -46,30 +46,31 @@ export default function Register() {
   };
 
   return (
-    <div>
+    <div id="registerForm">
       <h1 className='registerHereTag'>Register Here</h1>
       <form className='registerInputFields' onSubmit={registerUser}>
         <input
-          placeholder='email'
+          placeholder='Email'
           value={email}
           onChange={(ev) => setEmail(ev.target.value)}
         />
         <input
-          placeholder='name'
+          placeholder='Name'
           value={name}
           onChange={(ev) => setName(ev.target.value)}
         />
         <input
-          placeholder='password'
+          placeholder='Password'
           type='password'
           value={password}
           onChange={(ev) => setPassword(ev.target.value)}
         />
+        <img id="logoLogin" src="images/4.png" alt="Logo" />
         <button className='submitRegister' type='submit'>
           Register
         </button>
       </form>
-      <p>
+      <p id="login-area">
         Already a user?{' '}
         <Link className='loginLink' to={'/login'}>
           Login

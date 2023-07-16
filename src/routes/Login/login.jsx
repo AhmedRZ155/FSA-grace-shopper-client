@@ -49,30 +49,33 @@ export default function Login() {
   };
 
   return (
-    <div>
+  <div>
+    <div id="login-form">
       <h1 className='registerHereTag'>Login</h1>
       <form className='loginInputFields' onSubmit={userLogin}>
         <input
-          placeholder='username'
+          placeholder='Email'
           value={email}
           onChange={(ev) => setEmail(ev.target.value)}
         />
         <input
-          placeholder='password'
+          placeholder='Password'
           type='password'
           value={password}
           onChange={(ev) => setPassword(ev.target.value)}
         />
+        <img id="logoLogin" src="images/4.png" alt="Logo" />®
         <button className='submitLogin' type='submit'>
           Login
         </button>
       </form>
-      <p>
-        New here?{' '}
+      <p id="new-reg">
+        New To Moodi Fashion?{' '}
         <Link className='registerLink' to={'/register'}>
-          Register
+          Create Account
         </Link>
       </p>
     </div>
+  </div>
   );
 }

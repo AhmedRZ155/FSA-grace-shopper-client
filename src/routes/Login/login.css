@@ -12,10 +12,11 @@
   margin: 10px;
 }
 .submitLogin {
+  color: white;
+  background-color: black;
   border-radius: 5px;
-  width: 50%;
+  width: 15%;
   border: solid black 1px;
-  background-color: white;
 }
 .submitLogin:hover {
   color: white;
@@ -24,12 +25,39 @@
 .registerLink {
   text-decoration: none;
   color: black;
+  background-color: white;
   border: solid black 1px;
-  padding: 4px;
-  margin-left: 4px;
+  padding: 3px;
+  margin-left: 2px;
   border-radius: 5px;
 }
 .registerLink:hover {
   color: white;
   background-color: black;
+}
+
+.registerHereTag {
+  text-align: center;
+}
+
+#login-form {
+  background-color: #fbf0d4;
+  border: solid;
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 75px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-width: 700px;
+}
+
+#new-reg {
+  text-align: center;
+  padding-top: 5px;
+  margin-right: 160px;
+}
+
+#logoLogin {
+  max-width: 50px;
+  padding-bottom: 5px;
 }
