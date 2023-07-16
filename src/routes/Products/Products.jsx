@@ -38,7 +38,7 @@ const Products = () => {
           <h2>{product.name}</h2>
           <p className='price'>{product.price}</p>
           <p className='category'>{product.category}</p>
-          <img src={product.images[0].url} className='image' />
+          <img src={product.images[0]?.url} className='image' />
         </div>
       ))}
     </div>
