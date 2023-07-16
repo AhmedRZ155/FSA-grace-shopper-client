@@ -1,15 +1,15 @@
-import { Outlet, useRouteLoaderData } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar'
-import Notifications from './components/Notifications'
-export const BASE_URL = 'http://localhost:5173/'
-import { useState, useEffect } from 'react'
-import Footer from './components/Footer/footer'
-const initialToken = localStorage.getItem('token') || ''
+import { Outlet } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import Notifications from './components/Notifications';
+
+import { useState, useEffect } from 'react';
+
+const initialToken = localStorage.getItem('token') || '';
 
 export default function Root() {
-  const [user, setUser] = useState({})
-  const [token, setToken] = useState(initialToken)
-
+  const [user, setUser] = useState({});
+  const [token, setToken] = useState(initialToken);
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     const userData = async () => {
       try {
@@ -20,29 +20,29 @@ export default function Root() {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${token}`,
             },
-          },
-        )
-        const result = await response.json()
-        console.log(result)
+          }
+        );
+        const result = await response.json();
+        console.log(result);
         setUser({
           name: result.data.name,
           email: result.data.email,
           type: result.data.type,
-        })
-        setCart(result.data.cart)
+        });
+        setCart(result.data.cart);
       } catch (err) {
-        console.error(err)
+        console.error(err);
       }
-    }
+    };
     if (token) {
-      userData()
+      userData();
     }
-  }, [])
+  }, [token]);
   return (
     <div>
       <Navbar user={user} />
-      <Outlet context={{ user, setUser, token, setToken }} />
+      <Outlet context={{ user, setUser, token, setToken, cart, setCart }} />
       <Notifications />
     </div>
-  )
+  );
 }

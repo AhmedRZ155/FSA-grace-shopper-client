@@ -1,31 +1,19 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import './login.css'
-import { useOutletContext } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-hot-toast'
-=======
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './login.css';
+import { useOutletContext } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 export default function Login() {
-  const [loginUsername, setLoginUsername] = useState('');
-  const [loginPassword, setLoginPassword] = useState('');
-  const [email, setEmail] = '';
-  const [password, setPassword] = '';
->>>>>>> d50c5f9ae04811e498b710fc285adeff3fca7d18
-
-export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const { setToken, setUser } = useOutletContext()
-  const navigate = useNavigate()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { setToken, setUser } = useOutletContext();
+  const navigate = useNavigate();
 
   const userLogin = async (ev) => {
-    ev.preventDefault()
-    console.log(email, password)
+    ev.preventDefault();
+    console.log(email, password);
     try {
       const response = await fetch(
         `${import.meta.env.VITE_BASE_URL}/api/users/login`,
@@ -42,25 +30,17 @@ export default function Login() {
       );
       const result = await response.json();
       if (result.success) {
-<<<<<<< HEAD
-        const token = result.data.token
+        const token = result.data.token;
         setUser({
           name: result.data.name,
           email: result.data.email,
           type: result.data.type,
-        })
-        console.log(result)
-        setToken(result.data.token)
-        localStorage.setItem('token', result.data.token)
-        navigate('/')
-        toast.success('login!')
-=======
-        const token = result.data.token;
-        localStorage.setItem('token', token);
-        setUser(result.data.user);
-        setToken(token);
-        navigate('/home');
->>>>>>> d50c5f9ae04811e498b710fc285adeff3fca7d18
+        });
+        console.log(result);
+        setToken(result.data.token);
+        localStorage.setItem('token', result.data.token);
+        navigate('/');
+        toast.success('login!');
       }
       return result;
     } catch (err) {
@@ -69,47 +49,33 @@ export default function Login() {
   };
 
   return (
-    <div>
-<<<<<<< HEAD
-      <h1 className="registerHereTag">Login</h1>
-      <form className="loginInputFields">
+  <div>
+    <div id="login-form">
+      <h1 className='registerHereTag'>Login</h1>
+      <form className='loginInputFields' onSubmit={userLogin}>
         <input
-          placeholder="username"
+          placeholder='Email'
           value={email}
           onChange={(ev) => setEmail(ev.target.value)}
         />
         <input
-          placeholder="password"
-          type="password"
+          placeholder='Password'
+          type='password'
           value={password}
           onChange={(ev) => setPassword(ev.target.value)}
         />
-        <button onClick={userLogin} className="submitLogin" type="submit">
-=======
-      <h1 className='registerHereTag'>Login</h1>
-      <form className='loginInputFields' onSubmit={Login}>
-        <input
-          placeholder='username'
-          value={loginUsername}
-          onChange={(ev) => setLoginUsername(ev.target.value)}
-        />
-        <input
-          placeholder='password'
-          type='password'
-          value={loginPassword}
-          onChange={(ev) => setLoginPassword(ev.target.value)}
-        />
+        <img id="logoLogin" src="images/4.png" alt="Logo" />
         <button className='submitLogin' type='submit'>
->>>>>>> d50c5f9ae04811e498b710fc285adeff3fca7d18
           Login
         </button>
       </form>
-      <p>
-        New here?{' '}
+      <p id="new-reg">
+        New To Moodi Fashion?{' '}
         <Link className='registerLink' to={'/register'}>
-          Register
+          Create Account
         </Link>
       </p>
     </div>
+  </div>
   );
 }
