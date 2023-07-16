@@ -12,6 +12,8 @@ import Login from './routes/Login/login';
 import Products from './routes/Products/Products';
 import SingleProduct from './routes/SingleProduct/SingleProduct';
 import Carts from './routes/Cart/carts';
+import AddProduct from './routes/AddProduct/AddProduct';
+import Checkout from './routes/Checkout/checkout';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <Products />,
+      },
+      {
+        path: 'products/add',
+        element: <AddProduct />,
       },
       {
         path: '/products/:productId',
@@ -53,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: '/carts',
         element: <Carts />,
+      },
+      {
+        path: '/checkout',
+        element: <Checkout />,
       },
     ],
   },

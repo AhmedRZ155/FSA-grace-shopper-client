@@ -64,7 +64,7 @@ export default function Login() {
           value={password}
           onChange={(ev) => setPassword(ev.target.value)}
         />
-        <img id="logoLogin" src="images/4.png" alt="Logo" />
+        <img id="logoLogin" src="images/4.png" alt="Logo" />®
         <button className='submitLogin' type='submit'>
           Login
         </button>

@@ -6,10 +6,10 @@ export default function Navbar({ user, setToken, setUser }) {
   const [navShow, setNavShow] = useState(false)
   useState(false)
   function handleLogout() {
-    localStorage.removeItem('token')
-    alert(`Successfully logged out of ${user.name}'s profile`)
-    setToken('')
-    setUser({})
+    localStorage.removeItem('token');
+    alert(`Successfully logged out of ${user.name}'s profile`);
+    setToken('');
+    setUser({});
   }
   function toggleLinks() {
     setNavShow(!navShow)
@@ -104,6 +104,6 @@ export default function Navbar({ user, setToken, setUser }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
