@@ -37,8 +37,8 @@ const Cart = () => {
     }
   };
 
-  const increaseQuantity = async productId => {
-    const product = cart.find(item => item.id === productId);
+  const increaseQuantity = async (productId) => {
+    const product = cart.find((item) => item.id === productId);
     if (!product) {
       console.error(`Product with id ${productId} not found in cart`);
       return;
@@ -48,8 +48,8 @@ const Cart = () => {
     console.log(cart);
   };
 
-  const decreaseQuantity = async productId => {
-    const product = cart.find(item => item.id === productId);
+  const decreaseQuantity = async (productId) => {
+    const product = cart.find((item) => item.id === productId);
     if (!product) {
       console.error(`Product with id ${productId} not found in cart`);
       return;
@@ -61,7 +61,7 @@ const Cart = () => {
     console.log(cart);
   };
 
-  const removeItem = async productId => {
+  const removeItem = async (productId) => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_BASE_URL}/api/carts`,
@@ -126,7 +126,7 @@ const Cart = () => {
         <ul className='cart-items'>
           {cart.map((item, index) => (
             <li key={index} className='cart-item'>
-              <img src={item.images[0].url} className='image' />
+              <img src={item.images[0]?.url} className='image' />
               <div className='item-info'>
                 <h2>{item.name}</h2>
                 <p>Price: {item.price}</p>
