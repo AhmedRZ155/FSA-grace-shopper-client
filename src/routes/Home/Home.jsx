@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer/footer';
 import './Home.css';
+import Slider from '../../components/Slider/Slider';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -33,14 +34,14 @@ const Home = () => {
   }
 
   const trendingProducts = products.filter(
-    (product) => product.type === 'trending'
+    product => product.type === 'trending'
   );
-  const saleProducts = products.filter((product) => product.type === 'on sale');
-  const newProducts = products.filter((product) => product.type === 'new');
+  const saleProducts = products.filter(product => product.type === 'on sale');
+  const newProducts = products.filter(product => product.type === 'new');
 
-  const renderProducts = (products) => (
+  const renderProducts = products => (
     <div className='product-grid'>
-      {products.map((product) => (
+      {products.map(product => (
         <div
           onClick={() => navigate(`/products/${product.id}`)}
           className='product-card'
@@ -58,6 +59,7 @@ const Home = () => {
 
   return (
     <div className='container'>
+      <Slider />
       <h1>Trending</h1>
       {renderProducts(trendingProducts)}
 

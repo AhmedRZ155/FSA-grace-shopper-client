@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { useState } from 'react';
 import logo from '../../../images/4.png';
+import { toast } from 'react-hot-toast';
 
 export default function Navbar({ user, setToken, setUser }) {
   const [navShow, setNavShow] = useState(false);
-  useState(false);
+
   function handleLogout() {
     localStorage.removeItem('token');
-    alert(`Successfully logged out of ${user.name}'s profile`);
+    // alert(`Successfully logged out of ${user.name}'s profile`);
     setToken('');
     setUser({});
+    toast.success('Logged out');
   }
   function toggleLinks() {
     setNavShow(!navShow);
