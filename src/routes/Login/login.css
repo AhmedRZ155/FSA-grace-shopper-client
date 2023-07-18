@@ -30,12 +30,24 @@
   padding: 3px;
   margin-left: 2px;
   border-radius: 5px;
+  margin: 10px;
 }
 .registerLink:hover {
   color: white;
   background-color: black;
 }
 
+<<<<<<< HEAD
+.newCreate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.newToMoody {
+  color: rgb(138, 129, 129);
+=======
 .registerHereTag {
   text-align: center;
 }
@@ -61,4 +73,5 @@
 #logoLogin {
   max-width: 50px;
   padding-bottom: 5px;
+>>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
 }

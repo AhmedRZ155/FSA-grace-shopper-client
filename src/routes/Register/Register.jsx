@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import './Register.css'
+import { useOutletContext } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
+
+export default function Register() {
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
+  const { setToken, setUser } = useOutletContext()
+=======
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
@@ -11,6 +26,7 @@ export default function Register() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const { setToken, setUser } = useOutletContext();
+>>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
   const registerUser = async (ev) => {
     ev.preventDefault();
     try {
@@ -36,10 +52,17 @@ export default function Register() {
         name: result.data.name,
         email: result.data.email,
         type: result.data.type,
+<<<<<<< HEAD
+      })
+      localStorage.setItem('token', result.data.token)
+      navigate('/')
+      toast.success('login!')
+=======
       });
       localStorage.setItem('token', result.data.token);
       navigate('/');
       toast.success('login!');
+>>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
     } catch (err) {
       console.error(err);
     }
@@ -65,8 +88,12 @@ export default function Register() {
           value={password}
           onChange={(ev) => setPassword(ev.target.value)}
         />
+<<<<<<< HEAD
+        <button className="submitRegister" type="submit">
+=======
         <img id="logoLogin" src="images/4.png" alt="Logo" />
         <button className='submitRegister' type='submit'>
+>>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
           Register
         </button>
       </form>

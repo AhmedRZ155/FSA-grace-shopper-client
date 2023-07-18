@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+import { Outlet } from 'react-router-dom'
+import Navbar from './components/Navbar/Navbar'
+import Notifications from './components/Notifications'
+
+import { useState, useEffect } from 'react'
+
+const initialToken = localStorage.getItem('token') || ''
+
+export default function Root() {
+  const [user, setUser] = useState({})
+  const [token, setToken] = useState(initialToken)
+  const [cart, setCart] = useState([])
+=======
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Notifications from './components/Notifications';
@@ -10,6 +24,7 @@ export default function Root() {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(initialToken);
   const [cart, setCart] = useState([]);
+>>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
   useEffect(() => {
     const userData = async () => {
       try {
@@ -37,7 +52,11 @@ export default function Root() {
     if (token) {
       userData();
     }
+<<<<<<< HEAD
+  }, [token])
+=======
   }, [token]);
+>>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
   return (
     <div>
       <Navbar user={user} />
