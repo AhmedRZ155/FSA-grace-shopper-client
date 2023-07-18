@@ -1,27 +1,7 @@
-import './carts.css'
-import { useOutletContext } from 'react-router-dom'
+import './carts.css';
+import { useOutletContext } from 'react-router-dom';
 
 const Cart = () => {
-<<<<<<< HEAD
-  const { cart, setCart } = useOutletContext()
-
-  const increaseQuantity = (productId) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item,
-      ),
-    )
-  }
-
-  const decreaseQuantity = (productId) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId
-          ? { ...item, quantity: item.quantity > 1 ? item.quantity - 1 : 1 }
-          : item,
-      ),
-    )
-=======
   const { cart, setCart, token } = useOutletContext();
 
   const updateQuantity = async (productId, quantityChange) => {
@@ -57,8 +37,8 @@ const Cart = () => {
     }
   };
 
-  const increaseQuantity = async (productId) => {
-    const product = cart.find((item) => item.id === productId);
+  const increaseQuantity = async productId => {
+    const product = cart.find(item => item.id === productId);
     if (!product) {
       console.error(`Product with id ${productId} not found in cart`);
       return;
@@ -68,8 +48,8 @@ const Cart = () => {
     console.log(cart);
   };
 
-  const decreaseQuantity = async (productId) => {
-    const product = cart.find((item) => item.id === productId);
+  const decreaseQuantity = async productId => {
+    const product = cart.find(item => item.id === productId);
     if (!product) {
       console.error(`Product with id ${productId} not found in cart`);
       return;
@@ -81,7 +61,7 @@ const Cart = () => {
     console.log(cart);
   };
 
-  const removeItem = async (productId) => {
+  const removeItem = async productId => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_BASE_URL}/api/carts`,
@@ -135,39 +115,25 @@ const Cart = () => {
     } catch (err) {
       console.error(err);
     }
->>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
   }
 
   return (
-    <div className="cart-container">
+    <div className='cart-container'>
       <h1>Cart</h1>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-<<<<<<< HEAD
-        <ul className="cart-items">
-          {cart.map((item) => (
-            <li key={item.id} className="cart-item">
-              <div className="item-info">
-                <h2>{item.name}</h2>
-                <img src={item.images[0].url} className="image" />
-                <p>{item.description}</p>
-=======
         <ul className='cart-items'>
           {cart.map((item, index) => (
             <li key={index} className='cart-item'>
               <img src={item.images[0]?.url} className='image' />
               <div className='item-info'>
                 <h2>{item.name}</h2>
->>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
                 <p>Price: {item.price}</p>
                 <p>Quantity: {item.quantity}</p>
                 <button onClick={() => increaseQuantity(item.id)}>+</button>
                 <button onClick={() => decreaseQuantity(item.id)}>-</button>
-<<<<<<< HEAD
-=======
                 <button onClick={() => removeItem(item.id)}>Remove</button>
->>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
               </div>
             </li>
           ))}
@@ -178,7 +144,7 @@ const Cart = () => {
         <button onClick={checkout}>Checkout</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
