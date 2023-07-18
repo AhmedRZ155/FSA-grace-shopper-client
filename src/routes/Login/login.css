@@ -42,7 +42,8 @@
 
 #login-form {
   background-color: #fbf0d4;
-  border: solid;
+  border-radius: 1rem;
+  border: 1px solid gray;
   padding: 5px;
   margin-top: 20px;
   margin-left: 75px;
