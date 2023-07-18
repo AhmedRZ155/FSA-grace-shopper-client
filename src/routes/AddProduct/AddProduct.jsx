@@ -85,6 +85,7 @@ const AddProduct = () => {
   }
 
   return (
+    <div id="product-form">
     <form onSubmit={handleSubmit} className={styles.form}>
       <h1 className={styles.title}>Create New Product</h1>
       <Input
@@ -150,6 +151,7 @@ const AddProduct = () => {
         </button>
       </div>
     </form>
+    </div>
   );
 };
 
