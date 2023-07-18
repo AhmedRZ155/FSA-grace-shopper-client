@@ -41,7 +41,6 @@ const Women = () => {
       {products.map((product) => (
         <div
           onClick={() => navigate(`/products/${product.id}`)}
-          className='product-card'
           key={product.id}
         >
           <div className='product-card' key={product.id}>
@@ -49,7 +48,7 @@ const Women = () => {
 
             <p className='price'>{product.price}</p>
             <p className='category'>{product.category}</p>
-            <img src={product.images[0].url} className='image' />
+            <img src={product.images[0]?.url} className='image' />
           </div>
         </div>
       ))}

@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+<<<<<<< HEAD
 import Root from './root'
 import Home from './routes/Home/Home'
 
@@ -13,6 +14,20 @@ import Login from './routes/Login/login'
 import Products from './routes/Products/Products'
 import SingleProduct from './routes/SingleProduct/SingleProduct'
 import Carts from './routes/Cart/carts'
+=======
+import Root from './root';
+import Home from './routes/Home/Home';
+import Women from './routes/Women/Women';
+import Men from './routes/Men/Men';
+import Kids from './routes/Kids/Kids';
+import Register from './routes/Register/Register';
+import Login from './routes/Login/login';
+import Products from './routes/Products/Products';
+import SingleProduct from './routes/SingleProduct/SingleProduct';
+import Carts from './routes/Cart/carts';
+import AddProduct from './routes/AddProduct/AddProduct';
+import Checkout from './routes/Checkout/checkout';
+>>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
 
 const router = createBrowserRouter([
   {
@@ -26,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <Products />,
+      },
+      {
+        path: 'products/add',
+        element: <AddProduct />,
       },
       {
         path: '/products/:productId',
@@ -54,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: '/carts',
         element: <Carts />,
+      },
+      {
+        path: '/checkout',
+        element: <Checkout />,
       },
     ],
   },

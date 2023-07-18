@@ -152,6 +152,37 @@
   .shortNavHeader {
     display: none;
   }
+<<<<<<< HEAD
+}
+
+@media (min-width: 768px) {
+  .shortNav {
+    display: none;
+  }
+  .longNav {
+    padding: 10px;
+  }
+  .navLink {
+    margin: 10px;
+  }
+
+  .shortWelcome {
+    display: none;
+  }
+
+  .navToggleBtn {
+    display: none;
+  }
+
+  .noShowLong {
+    display: none;
+  }
+
+  .shortNavHeader {
+    display: none;
+  }
+=======
+>>>>>>> 2d7d7d4c2a75da3654e8564cb237907c9b9e7a54
 }
 
 @media (min-width: 768px) {
@@ -181,3 +212,4 @@
     display: none;
   }
 }
+
